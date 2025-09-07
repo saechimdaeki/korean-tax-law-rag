@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: llama3.2:1b
+          temperature: 0.1
+      embedding:
+        options:
+          model: "nomic-embed-text"
+    vectorstore:
+      chroma:
+        client:
+          host: http://localhost
+          port: 8000
+        collection-name: saechim_taxlaw_collection
+        initialize-schema: true
+
+app:
+  ingest:
+    on-startup: true
+    pattern: "classpath:laws/income_tax/income_tax.pdf"
+    source: "law"
+    tags: ["소득세법", "양도소득세", "가이드"]
+    max-chars: 800
+    overlap: 100
