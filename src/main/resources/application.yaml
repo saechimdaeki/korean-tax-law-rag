@@ -7,7 +7,7 @@ spring:
       base-url: http://localhost:11434
       chat:
         options:
-          model: llama3.2:1b
+          model: llama3.2:1b # 로컬 컴퓨터가 터질 것 같아 하향
           temperature: 0.1
       embedding:
         options:
